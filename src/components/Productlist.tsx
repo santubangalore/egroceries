@@ -6,7 +6,7 @@ import { Product } from "../lib/Product";
 
 
 const Productlist = () => {
-
+    const   PUBLIC_URL  = process.env.REACT_APP_PUBLIC_URL;
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [count, setCount] = useState(0);
@@ -14,7 +14,7 @@ const Productlist = () => {
 
    useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:5224/api/groceries')
+    fetch( `${PUBLIC_URL}/groceries`)
     .then((res) => res.json())
     .then((json) =>{        
         setProducts(json as Product[]);

@@ -13,6 +13,7 @@ type UserCart = {
 
 
 const CheckoutConfirm = () => {
+  const   PUBLIC_URL  = process.env.REACT_APP_PUBLIC_URL;
   const [showPopup, setShowPopup] = useState(false);
   const [isPurchased,setIsPurchased] = useState(true);
   const {cartItems} = useShoppingCart();
@@ -37,7 +38,7 @@ const CheckoutConfirm = () => {
     console.log('body:',JSON.stringify(userCart));
     
     try {
-      const response = await fetch('http://localhost:5224/api/orders/create', {
+      const response = await fetch(`${PUBLIC_URL}/orders/create` , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
